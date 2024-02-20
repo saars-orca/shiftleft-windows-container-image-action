@@ -33,8 +33,8 @@ on:
     #- cron: '0 0 * * *'
 jobs:
   orca-container_scan:
-    name: Orca Container Image Scan
-    runs-on: ubuntu-latest
+    name: Orca Container Windows Image Scan
+    runs-on: windows-latest
     env:
       PROJECT_KEY: <project key> # Set the desired project to run the cli scanning with
     steps:
@@ -65,14 +65,14 @@ jobs:
 | exit_code                    | 10                           | Exit code for failed execution due to policy violations                                    | Integer | No       | 3            |
 | silent                       | false                        | Disable logs and warnings output                                                           | Boolean | No       | false        |
 | console_output               | json                         | Prints results to console in the provided format (only when --output is provided)          | String  | No       | cli          |
-| config                       | config.json                  | Path to configuration file (json, yaml or toml)                                            | String  | No       | N/A          |
+| config                        | config.json                   | Path to configuration file (json, yaml or toml)                                              | String  | No       | N/A          |
 | disable_secret               | true                         | Disables the secret detection scanning                                                     | Boolean | No       | false        |
-| exceptions_filepath          | n/a                          | Exceptions YAML filepath. (File should be mounted)                                         | String  | No       | false        |
-| hide_vulnerabilities         | n/a                          | Do not show detailed view of the vulnerabilities findings                                  | Boolean | No       | false        |
+| exceptions_filepath           | n/a                          | Exceptions YAML filepath. (File should be mounted)                                          | String  | No       | false        |
+| hide_vulnerabilities         | n/a                          | Do not show detailed view of the vulnerabilities findings                                   | Boolean | No       | false        |
 | num_cpu                      | 10                           | Number of logical CPUs to be used for secret scanning (default 10)                         | Integer | No       | 10           |
 | show_failed_issues_only      | n/a                          | Show only failed issues                                                                    | Boolean | No       | false        |
-| custom_secret_controls       | custom_rules.yaml            | Path to custom secret controls file                                                        | String  | No       | N/A          |
-| tar_archive                  | n/a                          | Scan a tar archived image. Input should be the path of the image .tar file                 | Boolean | No       | false        |
+| custom_secret_controls       | custom_rules.yaml            | Path to custom secret controls file                                                         | String  | No       | N/A          |
+| tar_archive                  | n/a                          | Scan a tar archived image. Input should be the path of the image .tar file                  | Boolean | No       | false        |
 | oci                          | n/a                          | Scan an OCI image                                                                          | Boolean | No       | false        |
 | skip_remote_lookup           | false                        | Do not perform remote lookups for dependency information during the scan.                  | Boolean | No       | false        |
 | display_name                 | custom-display-name          | Scan log display name (on Orca platform)                                                   | String  | No       | N/A          |
@@ -87,7 +87,7 @@ By default, the scan output is displayed on the console, but you can choose to s
 The output file name is following the format of `image<.output_format_extension>`.
 
 For instance:
-| Output format | Output directory | Output file path     |
+| Output format | Output directory | Output file path      |
 |---------------|------------------|----------------------|
 | table         | results/         | results/image        |
 | json          | results/         | results/image.json   |
@@ -143,8 +143,10 @@ jobs:
 
 The results list can be found on the security tab of your GitHub project and should look like the following image
 
+# TODO: update this
 ![](/assets/container_scanning_list.png)
 
 An entry should describe the error and in which line it occurred 
 
+# TODO: update this
 ![](/assets/scanned_entry.png)
